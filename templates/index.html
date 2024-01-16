@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lesson Planner</title>
+<link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Plan Your Lesson</h1>
+
+    <div class="input-fields">
+      <div class="field yt-field" data-type="youtubeLinks">
+        <label for="youtubeLinks-1">YouTube Videos:</label>
+        <input type="text" id="youtubeLinks-1" placeholder="Enter YouTube link">
+      </div>
+      <div class="field document-field" data-type="documentFiles">
+        <label for="documentFiles-1">Documents:</label>
+        <input type="file" id="documentFiles-1">
+      </div>
+      <div class="field text-description-field" data-type="textDescription">
+        <label for="textDescription-1">Lesson Description:</label>
+        <textarea id="textDescription-1" rows="4"></textarea>
+      </div>
+      <div class="field lesson-length-field" data-type="lessonLength">
+        <label for="lessonLength-1">Lesson Duration:</label>
+        <input type="range" min="15" max="120" value="60" id="lessonLength-1" step="5">
+        <span id="lessonLengthValue">60 minutes</span>
+      </div>
+      <div class="field image-field" data-type="imageFiles">
+        <label for="imageFiles-1">Image:</label>
+        <input type="file" id="imageFiles-1">
+      </div>
+    </div>
+
+    <button id="plan-lesson" disabled>Plan Lesson</button>
+
+    <div class="lesson-plan" id="lesson-plan-display">
+      Lesson plan will show here
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="../static/js/main.js"></script>
+
+</body>
+</html>
