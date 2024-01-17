@@ -7,7 +7,7 @@ This innovative tool harnesses the capabilities of the Gemini Pro language model
 ## Key Features:
 
 AI-powered lesson generation: Gemini AI intelligently analyzes input materials to extract key information and create a structured lesson plan.
-Support for diverse input formats: Accepts YouTube videos, documents (PDF, DOC, DOCX), images, and text.
+Support for diverse input formats: Accepts YouTube videos, documents (currently DOCX only), images, and text.
 Tailored to individual teaching styles: Customize generated lesson plans to align with your unique approach and preferences.
 Comprehensive output: Generates lesson plans that include objectives, activities, assessments, and suggested resources.
 Time-saving: Streamlines lesson planning process, freeing up valuable time for other tasks.
