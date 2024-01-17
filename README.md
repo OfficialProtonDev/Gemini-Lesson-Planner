@@ -18,6 +18,7 @@ Install dependencies:
 ```
 pip install -r requirements.txt
 ```
+Place your Gemini API key in key.txt. Find your API key here: https://makersuite.google.com/app/apikey
 Run the application:
 ```
 python app.py
