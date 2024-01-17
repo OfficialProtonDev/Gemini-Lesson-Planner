@@ -14,16 +14,17 @@ Time-saving: Streamlines lesson planning process, freeing up valuable time for o
 Accessible and user-friendly: Easy-to-use interface with clear instructions and guidance.
 ## Getting Started:
 
-Install dependencies:
+1. Install dependencies:
 ```
 pip install -r requirements.txt
 ```
-Place your Gemini API key in key.txt. Find your API key here: https://makersuite.google.com/app/apikey
-Run the application:
+2. Place your Gemini API key in key.txt. Find your API key here: https://makersuite.google.com/app/apikey
+
+3. Run the application:
 ```
 python app.py
 ```
-Access the web interface: Open http://localhost:5000 in your browser.
+4. Access the web interface: Open http://localhost:5000 in your browser.
 ## Usage:
 
 Upload or provide links to your input materials.
