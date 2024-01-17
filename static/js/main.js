@@ -1,11 +1,20 @@
 let inputFields = document.querySelectorAll('.input-fields input, .input-fields textarea');
-let requireOneInputFields = document.querySelectorAll('.input-fields input, .input-fields textarea');
+
 const planLessonButton = document.getElementById('plan-lesson');
 const lessonPlanDisplay = document.getElementById('lesson-plan-display');
+
 const lessonLengthSlider = document.getElementById("lessonLength-1");
 const lessonLengthValue = document.getElementById("lessonLengthValue");
+
 const studentYearSlider = document.getElementById("studentYear-1");
 const studentYearValue = document.getElementById("studentYearValue");
+
+const textDescription = document.getElementById("textDescription-1");
+const descriptionLengthValue = document.getElementById("textLengthValue");
+
+const minimumCharacters = 20;
+
+let processingPlan = false;
 
 lessonLengthSlider.addEventListener("input", () => {
   lessonLengthValue.textContent = lessonLengthSlider.value + " minutes";
@@ -17,10 +26,10 @@ studentYearSlider.addEventListener("input", () => {
 
 inputFields.forEach(field => {
   field.addEventListener('input', () => {
-    if (hasAnyInput()) {
-      planLessonButton.disabled = false;
+    if (hasTextInput() && !processingPlan) {
+      disablePlanButton(false);
     } else {
-      planLessonButton.disabled = true;
+      disablePlanButton(true);
     }
   });
 });
@@ -28,6 +37,9 @@ inputFields.forEach(field => {
 planLessonButton.addEventListener('click', () => {
   let hasInvalidInputs = false;
   const invalidInputs = [];
+
+  processingPlan = true;
+  disablePlanButton(true);
 
   inputFields = document.querySelectorAll('.input-fields input, .input-fields textarea');
 
@@ -63,6 +75,8 @@ planLessonButton.addEventListener('click', () => {
   });
 
   if (hasInvalidInputs) {
+    disablePlanButton(false);
+    processingPlan = false;
     // Display error message to the user
     alert(`Invalid ${invalidInputs.join(" & ")}`);
   } else {
@@ -104,13 +118,22 @@ planLessonButton.addEventListener('click', () => {
     .then(response => response.json())
     .then(data => {
       lessonPlanDisplay.innerHTML = marked.parse(data.plan);  // Renders Markdown with formatting
+      disablePlanButton(false);
+      processingPlan = false;
     })
     .catch(error => {
       console.error('Error sending lesson data:', error);
       // Handle any errors here
+      disablePlanButton(false);
+      processingPlan = false;
     });
   }
 });
+
+function disablePlanButton(state) {
+  console.log("Setting state: " + state);
+  planLessonButton.disabled = state;
+}
 
 // Helper functions for validation (replace with your actual validation logic)
 function validateYoutubeLink(link) {
@@ -134,9 +157,24 @@ function validateFileType(fileValue, allowedExtensions) {
   return allowedExtensions.includes(fileExtension);
 }
 
-function hasAnyInput() {
-    return [...inputFields].some(field => field.value !== "");
+function hasTextInput() {
+  const characterCount = textDescription.value.length;
+  
+  if (characterCount >= minimumCharacters) {
+    // User has written 20+ characters
+    console.log("Description has sufficient characters!");
+    return true
+  } else {
+    // Character count is below 20
+    console.log("Description needs more characters.");
+    return false
+  }
 }
+
+textDescription.addEventListener("input", () => {
+  const characterCount = textDescription.value.length;
+  descriptionLengthValue.textContent = characterCount + "/20 min characters"
+});
 
 const maxInputs = {
     youtubeLinks: 3,

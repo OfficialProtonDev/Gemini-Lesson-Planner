@@ -54,8 +54,6 @@ def receive_lesson_data():
 
     plan = generate_plan(text, videos, lesson_length, processed_images, documents_text, student_year)
 
-    print(plan.text)
-
     # Return the plan as JSON
     return jsonify({'plan': plan.text})  # Modified line
 
