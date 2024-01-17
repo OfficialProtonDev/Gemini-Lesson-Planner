@@ -57,7 +57,7 @@ planLessonButton.addEventListener('click', () => {
           }
           break;
         case "documentFiles":
-          if (!validateFileType(field.value, ["doc", "docx", "pdf"])) {
+          if (!validateFileType(field.value, ["docx"])) {
             invalidInputs.push(`document file/s`);
             hasInvalidInputs = true;
           }
