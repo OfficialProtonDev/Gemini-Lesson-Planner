@@ -4,7 +4,9 @@ from urllib.parse import urlparse, parse_qs
 from urllib import request, parse
 import json
 
-key = "your_key_here"
+with open("key.txt", "r") as file:
+    key = file.read()
+    print(key)
 
 genai.configure(api_key=key)
 
