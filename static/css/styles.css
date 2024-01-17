@@ -117,4 +117,18 @@
     content: url(path/to/image-icon.png);
     margin-right: 10px;
   }
+
+  .centered_button_container {
+    height: 75px;
+    position: relative;
+  }
+
+  .centered_button {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
   

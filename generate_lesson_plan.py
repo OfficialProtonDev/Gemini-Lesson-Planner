@@ -12,7 +12,7 @@ genai.configure(api_key=key)
 
 system_prompt = "You are an advanced lesson-planning AI, you are designed to plan efficient and engaging lesson plans for teachers in new zealand using a wide range of inputs. Use markdown formatting."
 
-def generate_plan(text, videos, lesson_length, images, documents):
+def generate_plan(text, videos, lesson_length, images, documents, student_year):
     video_info = []
     document_info = []
 
@@ -46,11 +46,11 @@ def generate_plan(text, videos, lesson_length, images, documents):
         summarized_document = preprocessing_model.generate_content(f"Summarize all important information from the following document so that it can be fed into a new prompt for creating a detailed lesson plan based on this document and other inputs. Document to summarize: {document}")
         document_info.append(summarized_document.text)
 
-    print(document_info)
+    print(text)
 
     if images != []:
         prompt_content = [
-            system_prompt + f" Generate a {lesson_length} lesson (with time blocks) based on the subject/s or information presented in the following: YouTube video/s summary: {video_info}, Document/s summary: {document_info}, and in the attached images. This is the teachers notes/lesson description: {text}",
+            system_prompt + f" Generate a {lesson_length} lesson (with time blocks) based on the subject/s or information presented in the following: YouTube video/s summary: {video_info}, Document/s summary: {document_info}, and in the attached images. This is the teachers notes/lesson description: {text}. This lesson should strictly follow the subjects mentioned, but it should be tailored toward {student_year} students.",
         ]
 
         for image in images:
@@ -59,7 +59,7 @@ def generate_plan(text, videos, lesson_length, images, documents):
         response = main_model.generate_content(prompt_content)
 
     else:
-        response = main_model.generate_content(system_prompt + f" Generate a {lesson_length} lesson (with time blocks) based on the subject/s or information presented in the following: YouTube video/s summary: {video_info}, and document/s summary: {document_info}. This is the teachers notes/lesson description: {text}")
+        response = main_model.generate_content(system_prompt + f" Generate a {lesson_length} lesson (with time blocks) based on the subject/s or information presented in the following: YouTube video/s summary: {video_info}, and document/s summary: {document_info}. This is the teachers notes/lesson description: {text}. This lesson should strictly follow the subjects mentioned, but it should be tailored toward {student_year} students.")
 
     return response
 

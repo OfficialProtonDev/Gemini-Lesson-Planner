@@ -13,19 +13,21 @@ def index():
 def receive_lesson_data():
     lesson_data = request.form
 
-    print(request.files)
+    print(lesson_data)
 
-    text = lesson_data.getlist("textDescription-")
+    text = lesson_data.get("textDescription-1")
     videos = lesson_data.getlist("youtubeLinks-")
     documents = request.files.getlist("documentFiles")
     images = request.files.getlist("imageFiles")
     lesson_length = lesson_data.get("lessonLength-1")
+    student_year = lesson_data.get("studentYear-1")
 
     print("Lesson Description:", text)
     print("Video Links:", videos)
     print("Lesson Length:", lesson_length)
     print("Documents:", documents)
     print("Images:", images)
+    print("Student Age: ", student_year)
 
     documents_text = []
     processed_images = []
@@ -50,7 +52,7 @@ def receive_lesson_data():
     for image in images:
         processed_images.append(PIL.Image.open(image))
 
-    plan = generate_plan(text, videos, lesson_length, processed_images, documents_text)
+    plan = generate_plan(text, videos, lesson_length, processed_images, documents_text, student_year)
 
     print(plan.text)
 

@@ -30,9 +30,18 @@
         <label for="imageFiles-1">Image:</label>
         <input type="file" id="imageFiles-1">
       </div>
+      <div class="field student-year-field" data-type="studentYear">
+        <label for="studentYear-1">Student Age:</label>
+        <input type="range" min="5" max="18" value="11" id="studentYear-1" step="1">
+        <span id="studentYearValue">11 year old</span>
+      </div>
     </div>
-
-    <button id="plan-lesson" disabled>Plan Lesson</button>
+    
+    <div class="centered_button_container">
+      <div class="centered_button">
+        <button id="plan-lesson" disabled>Plan Lesson</button>
+      </div>
+    </div>
 
     <div class="lesson-plan" id="lesson-plan-display">
       Lesson plan will show here

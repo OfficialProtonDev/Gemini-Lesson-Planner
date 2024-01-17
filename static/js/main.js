@@ -1,11 +1,18 @@
 let inputFields = document.querySelectorAll('.input-fields input, .input-fields textarea');
+let requireOneInputFields = document.querySelectorAll('.input-fields input, .input-fields textarea');
 const planLessonButton = document.getElementById('plan-lesson');
 const lessonPlanDisplay = document.getElementById('lesson-plan-display');
-const slider = document.getElementById("lessonLength-1");
-const sliderValue = document.getElementById("lessonLengthValue");
+const lessonLengthSlider = document.getElementById("lessonLength-1");
+const lessonLengthValue = document.getElementById("lessonLengthValue");
+const studentYearSlider = document.getElementById("studentYear-1");
+const studentYearValue = document.getElementById("studentYearValue");
 
-slider.addEventListener("input", () => {
-  sliderValue.textContent = slider.value + " minutes";
+lessonLengthSlider.addEventListener("input", () => {
+  lessonLengthValue.textContent = lessonLengthSlider.value + " minutes";
+});
+
+studentYearSlider.addEventListener("input", () => {
+  studentYearValue.textContent = studentYearSlider.value + " year old";
 });
 
 inputFields.forEach(field => {
@@ -60,7 +67,8 @@ planLessonButton.addEventListener('click', () => {
     alert(`Invalid ${invalidInputs.join(" & ")}`);
   } else {
     lessonPlanDisplay.textContent = "Lesson plan generating...";
-    lessonData["lessonLength-1"] = sliderValue.textContent;
+    lessonData["lessonLength-1"] = lessonLengthValue.textContent;
+    lessonData["studentYear-1"] = studentYearValue.textContent;
 
     // Handle lesson planning logic here (e.g., send data to a server, process it locally, etc.)
     console.log(lessonData); // For now, just log the gathered data
@@ -89,15 +97,12 @@ planLessonButton.addEventListener('click', () => {
       }
     }
 
-    console.log("FormData constructed successfully."); // Log a success message instead
-
     fetch('/plan-lesson', {
       method: 'POST',
       body: formData
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data.message);
       lessonPlanDisplay.innerHTML = marked.parse(data.plan);  // Renders Markdown with formatting
     })
     .catch(error => {
