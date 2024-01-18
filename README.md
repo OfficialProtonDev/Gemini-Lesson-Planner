@@ -28,7 +28,7 @@ python app.py
 ## Usage:
 
 Upload or provide links to your input materials.
-Select desired lesson length.
+Select desired lesson length and target student age.
 Click "Plan Lesson".
 
 ## License:
