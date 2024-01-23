@@ -1,0 +1,114 @@
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f5;
+  }
+  
+  .container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 600px; /* Define a specific width for responsiveness */
+  }
+  
+  .input-fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two-column layout */
+    gap: 20px;
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  input[type="text"],
+  textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    outline: none; /* Remove browser outline for cleaner look */
+  }
+  
+  textarea {
+    height: 140px;
+  }
+  
+  button {
+    margin-top: 10px;
+    background-color: #008cff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #007bff;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  
+  .lesson-plan {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #fafafa; /* Lightly shaded background */
+  }
+  
+  .lesson-plan h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .lesson-plan p {
+    margin-bottom: 10px;
+  }
+  
+  .lesson-plan ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .lesson-plan ul li {
+    margin-bottom: 5px;
+  }
+  
+  /* Optional icons for input types (replace with appropriate icon images) */
+  
+  .centered_button_container {
+    height: 75px;
+    position: relative;
+  }
+
+  .centered_button {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  
